@@ -5,6 +5,14 @@
 
 using namespace std;
 
+#pragma comment(lib, "winmm.lib")
+
+DWORD WINAPI MusicThread(void* param)
+{
+	PlaySoundA("menu_music.wav", NULL, SND_NODEFAULT | SND_LOOP);
+	return 0;
+}
+
 void menu()
 {
 	system("title Sokoban");
@@ -25,9 +33,12 @@ void menu()
 	cout << "\t██████╔╝╚█████╔╝██║░╚██╗╚█████╔╝██████╦╝██║░░██║██║░╚███║\n";
 	cout << "\t╚═════╝░░╚════╝░╚═╝░░╚═╝░╚════╝░╚═════╝░╚═╝░░╚═╝╚═╝░░╚══╝\n";
 	SetConsoleTextAttribute(h, 15);
-	cout << "\n\t\t\t\tNew Game\n";
-	cout << "\n\t\t\t\tExit\n";
+	cout << "\n\t\t\t   █▀█ █   ▄▀█ █▄█";
+	cout << "\n\t\t\t   █▀▀ █▄▄ █▀█  █\n";
+	cout << "\n\t\t\t   █▀▀ ▀▄▀ █ ▀█▀";
+	cout << "\n\t\t\t   ██▄ █ █ █  █ \n";
 	bool click = true;
+	CreateThread(0, 0, MusicThread, 0, 0, 0);
 	while (click)
 	{
 		ReadConsoleInput(hin, all_events, events_count, &read_event);
@@ -37,19 +48,35 @@ void menu()
 			c.Y = all_events[i].Event.MouseEvent.dwMousePosition.Y;
 
 
-			if (c.X >= 32 && c.X <= 39 && c.Y == 8 &&
+			if (c.X >= 27 && c.X <= 41 && c.Y == 8 &&
 				all_events[i].Event.MouseEvent.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED)
 			{
 				click = false;
 				system("cls");
 			}
-
-			else if (c.X >= 32 && c.X <= 35 && c.Y == 10 &&
+			else if (c.X >= 27 && c.X <= 41 && c.Y == 9 &&
+				all_events[i].Event.MouseEvent.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED)
+			{
+				click = false;
+				system("cls");
+			}
+			else if (c.X >= 27 && c.X <= 39 && c.Y == 11 &&
 				all_events[i].Event.MouseEvent.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED)
 			{
 
 				exit(0);
 			}
+			else if (c.X >= 27 && c.X <= 39 && c.Y == 12 &&
+				all_events[i].Event.MouseEvent.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED)
+			{
+
+				exit(0);
+			}
+			//COORD info{ 0, 0 };
+			//SetConsoleCursorPosition(h, info);
+			//cout << "Current cursor position:         ";
+			//SetConsoleCursorPosition(h, info);
+			//cout << "Current cursor position: " << c.X << " " << c.Y;
 		}
 	}
 }
@@ -85,7 +112,7 @@ int main()
 				cout << (" "); //пустота
 				break;
 			case 1: 
-				cout << ("■"); //стена
+				cout << ("█"); //стена
 				break;
 			case 3: 
 				cout << ("x"); //место для коробки
