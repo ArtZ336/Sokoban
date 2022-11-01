@@ -12,7 +12,7 @@ int main()
 	cci.bVisible = false;
 	cci.dwSize = 100;
 	SetConsoleCursorInfo(h, &cci);
-
+	
 	menu();
 	GamePlay();
 

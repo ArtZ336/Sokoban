@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int map[5][7] = {
+int map1[5][7] = {
 {1,1,1,1,1,0,0},
 {1,5,0,0,1,0,0},
 {1,0,1,4,1,1,1},
@@ -13,7 +13,7 @@ int map[5][7] = {
 {1,1,1,1,1,1,1}
 };
 
-int map1[7][7] = {
+int map2[7][7] = {
 {1,1,1,1,1,1,1},
 {1,3,0,0,0,3,1},
 {1,0,0,4,0,0,1},
@@ -23,7 +23,17 @@ int map1[7][7] = {
 {1,1,1,1,1,1,1}
 };
 
-int map2[8][8] = {
+int map3[7][7] = {
+{1,1,1,1,1,1,1},
+{1,3,0,0,0,3,1},
+{1,0,4,5,4,0,1},
+{1,0,1,1,1,0,1},
+{1,0,4,0,4,0,1},
+{1,3,0,0,0,3,1},
+{1,1,1,1,1,1,1}
+};
+
+int map4[8][8] = {
 {1,1,1,1,1,1,1,1},
 {1,0,0,0,1,0,0,1},
 {1,0,1,0,1,4,3,1},
@@ -33,6 +43,9 @@ int map2[8][8] = {
 {1,1,1,1,1,5,0,1},
 {0,0,0,0,1,1,1,1}
 };
+
+
+
 
 template <size_t y, size_t x>
 void LevelGenerator(int (&map)[y][x])
@@ -183,8 +196,8 @@ void Level1()
 	SetConsoleTextAttribute(h, 14);
 	cout << "\n\t\t\t\tLevel 1";
 	SetConsoleTextAttribute(h, 15);
-	LevelGenerator(map);
-	Movement(map);
+	LevelGenerator(map1);
+	Movement(map1);
 }
 
 
@@ -195,8 +208,8 @@ void Level2()
 	SetConsoleTextAttribute(h, 14);
 	cout << "\n\t\t\t\tLevel 2";
 	SetConsoleTextAttribute(h, 15);
-	LevelGenerator(map1);
-	Movement(map1);
+	LevelGenerator(map2);
+	Movement(map2);
 }
 
 void Level3()
@@ -205,11 +218,19 @@ void Level3()
 	SetConsoleTextAttribute(h, 14);
 	cout << "\n\t\t\t\tLevel 3";
 	SetConsoleTextAttribute(h, 15);
-	LevelGenerator(map2);
-	Movement(map2);
+	LevelGenerator(map3);
+	Movement(map3);
 }
 
-
+void Level4()
+{
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(h, 14);
+	cout << "\n\t\t\t\tLevel 4";
+	SetConsoleTextAttribute(h, 15);
+	LevelGenerator(map4);
+	Movement(map4);
+}
 
 
 void GamePlay()
@@ -223,7 +244,7 @@ void GamePlay()
 		{
 			for (int j = 0; j < 7; j++)
 			{
-				if (map[i][j] == 7 && map[i][j + 1] == 7)
+				if (map1[i][j] == 7 && map1[i][j + 1] == 7)
 				{
 					system("cls");
 					status1 = false;
@@ -236,11 +257,11 @@ void GamePlay()
 	{
 		system("cls");
 		Level2();
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < 7; i++)
 		{
-			for (int j = 0; j < 8; j++)
+			for (int j = 0; j < 7; j++)
 			{
-				if (map1[i][j] == 7 && map1[i][j + 4] == 7 && map1[i + 4][j] == 7 && map1[i + 4][j + 4] == 7)
+				if (map2[i][j] == 7 && map2[i][j + 4] == 7 && map2[i + 4][j] == 7 && map2[i + 4][j + 4] == 7)
 				{
 					system("cls");
 					status2 = false;
@@ -257,7 +278,7 @@ void GamePlay()
 		{
 			for (int j = 0; j < 7; j++)
 			{
-				if (map2[i][j] == 7 && map2[i + 1][j] == 7 && map2[i + 2][j] == 7)
+				if (map3[i][j] == 7 && map3[i][j + 4] == 7 && map3[i + 4][j] == 7 && map3[i + 4][j + 4] == 7)
 				{
 					system("cls");
 					status3 = false;
@@ -265,6 +286,22 @@ void GamePlay()
 			}
 		}
 	}
-
+	int status4 = true;
+	while (status4)
+	{
+		system("cls");
+		Level4();
+		for (int i = 0; i < 8; i++)
+		{
+			for (int j = 0; j < 8; j++)
+			{
+				if (map4[i][j] == 7 && map4[i + 1][j] == 7 && map4[i + 2][j] == 7)
+				{
+					system("cls");
+					status4 = false;
+				}
+			}
+		}
+	}
 
 }
