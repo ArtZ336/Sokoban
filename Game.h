@@ -44,7 +44,16 @@ int map4[8][8] = {
 {0,0,0,0,1,1,1,1}
 };
 
-
+int map5[8][8] = {
+{1,1,1,1,1,1,0,0},
+{1,0,0,0,0,1,0,0},
+{1,0,1,1,0,1,1,1},
+{1,0,0,4,0,0,0,1},
+{1,4,3,4,0,4,0,1},
+{1,3,3,1,1,4,1,1},
+{1,3,3,5,0,0,1,0},
+{1,1,1,1,1,1,1,0}
+};
 
 
 template <size_t y, size_t x>
@@ -231,7 +240,15 @@ void Level4()
 	LevelGenerator(map4);
 	Movement(map4);
 }
-
+void Level5()
+{
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(h, 14);
+	cout << "\n\t\t\t\tLevel 5";
+	SetConsoleTextAttribute(h, 15);
+	LevelGenerator(map5);
+	Movement(map5);
+}
 
 void GamePlay()
 {
@@ -303,5 +320,21 @@ void GamePlay()
 			}
 		}
 	}
-
+	int status5 = true;
+	while (status5)
+	{
+		system("cls");
+		Level5();
+		for (int i = 0; i < 8; i++)
+		{
+			for (int j = 0; j < 8; j++)
+			{
+				if (map5[i][j] == 7 && map5[i + 1][j] == 7 && map5[i + 1][j - 1] == 7 && map5[i + 2][j] == 7 && map5[i + 2][j - 1])
+				{
+					system("cls");
+					status5 = false;
+				}
+			}
+		}
+	}
 }
