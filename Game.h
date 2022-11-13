@@ -44,7 +44,17 @@ int map4[8][8] = {
 {0,0,0,0,1,1,1,1}
 };
 
-int map5[8][8] = {
+int map5[7][7] = {
+{1,1,1,1,1,1,1},
+{1,0,0,0,3,0,1},
+{1,0,1,0,1,0,1},
+{1,0,4,5,4,0,1},
+{1,0,1,4,1,3,1},
+{1,0,0,3,0,0,1},
+{1,1,1,1,1,1,1}
+};
+
+int map6[8][8] = {
 {1,1,1,1,1,1,0,0},
 {1,0,0,0,0,1,0,0},
 {1,0,1,1,0,1,1,1},
@@ -196,6 +206,14 @@ void Movement(int(&map)[height][width])
 			}
 		}
 		break;
+	case 'e':
+		system("cls");
+		cout << "\n\t█▄█ █▀█ █ █   █   █▀▀ █▀▀ ▀█▀   ▀█▀ █ █ █▀▀   █▀▀ ▄▀█ █▀▄▀█ █▀▀ █\n";
+		cout << "\t █  █▄█ █▄█   █▄▄ ██▄ █▀   █     █  █▀█ ██▄   █▄█ █▀█ █ ▀ █ ██▄ ▄\n";
+		exit(0);
+		break;
+	case 'r':
+		break;
 	}
 }
 void Level1()
@@ -240,6 +258,7 @@ void Level4()
 	LevelGenerator(map4);
 	Movement(map4);
 }
+
 void Level5()
 {
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -248,6 +267,16 @@ void Level5()
 	SetConsoleTextAttribute(h, 15);
 	LevelGenerator(map5);
 	Movement(map5);
+}
+
+void Level6()
+{
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(h, 14);
+	cout << "\n\t\t\t\tLevel 6";
+	SetConsoleTextAttribute(h, 15);
+	LevelGenerator(map6);
+	Movement(map6);
 }
 
 void GamePlay()
@@ -329,7 +358,7 @@ void GamePlay()
 		{
 			for (int j = 0; j < 8; j++)
 			{
-				if (map5[i][j] == 7 && map5[i + 1][j] == 7 && map5[i + 1][j - 1] == 7 && map5[i + 2][j] == 7 && map5[i + 2][j - 1])
+				if (map5[i][j] == 7 && map5[i + 3][j + 1] == 7 && map5[i + 4][j - 1 == 7])
 				{
 					system("cls");
 					status5 = false;
@@ -337,4 +366,22 @@ void GamePlay()
 			}
 		}
 	}
+	int status6 = true;
+	while (status6)
+	{
+		system("cls");
+		Level6();
+		for (int i = 0; i < 8; i++)
+		{
+			for (int j = 0; j < 8; j++)
+			{
+				if (map6[i][j] == 7 && map6[i + 1][j] == 7 && map6[i + 1][j - 1] == 7 && map6[i + 2][j] == 7 && map6[i + 2][j - 1])
+				{
+					system("cls");
+					status6 = false;
+				}
+			}
+		}
+	}
+
 }

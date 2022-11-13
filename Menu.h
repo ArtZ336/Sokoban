@@ -8,7 +8,10 @@ using namespace std;
 
 DWORD WINAPI MusicThread(void* param)
 {
-	PlaySoundA("menu_music.wav", NULL, SND_NODEFAULT | SND_LOOP);
+	while (true)
+	{
+		PlaySoundA("menu_music.wav", NULL, SND_NODEFAULT | SND_LOOP);
+	}
 	return 0;
 }
 
