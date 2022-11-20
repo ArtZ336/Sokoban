@@ -54,7 +54,18 @@ int map5[7][7] = {
 {1,1,1,1,1,1,1}
 };
 
-int map6[8][8] = {
+int map6[9][12] = {
+	{1,1,1,1,1,1,1,0,0,0,0,0},
+	{1,0,0,0,0,0,1,1,1,1,1,1},
+	{1,0,1,4,1,4,0,0,0,0,0,1},
+	{1,0,0,0,1,0,0,1,0,1,0,1},
+	{1,3,1,3,1,4,4,4,4,4,5,1},
+	{1,0,3,0,0,0,0,0,0,0,1,1},
+	{1,3,1,3,1,1,1,1,1,1,1,0},
+	{1,3,0,3,1,0,0,0,0,0,0,0},
+	{1,1,1,1,1,0,0,0,0,0,0,0}
+};
+int map10[8][8] = {
 {1,1,1,1,1,1,0,0},
 {1,0,0,0,0,1,0,0},
 {1,0,1,1,0,1,1,1},
@@ -65,9 +76,8 @@ int map6[8][8] = {
 {1,1,1,1,1,1,1,0}
 };
 
-
 template <size_t y, size_t x>
-void LevelGenerator(int (&map)[y][x])
+void LevelGenerator(int(&map)[y][x])
 {
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	cout << "\n\n";
@@ -106,7 +116,7 @@ void LevelGenerator(int (&map)[y][x])
 				break;
 			case 8:
 				SetConsoleTextAttribute(h, 5);
-				cout << ("☺"); //направление
+				cout << ("☺"); //место для коробки и персонаж в одном блоке
 				SetConsoleTextAttribute(h, 15);
 				break;
 			}
@@ -153,7 +163,6 @@ void Movement(int(&map)[height][width])
 				map[r][c] -= 5;
 			}
 		}
-
 		break;
 
 	case 's':
@@ -206,19 +215,18 @@ void Movement(int(&map)[height][width])
 			}
 		}
 		break;
+
 	case 'e':
 		system("cls");
-		cout << "\n\t█▄█ █▀█ █ █   █   █▀▀ █▀▀ ▀█▀   ▀█▀ █ █ █▀▀   █▀▀ ▄▀█ █▀▄▀█ █▀▀ █\n";
-		cout << "\t █  █▄█ █▄█   █▄▄ ██▄ █▀   █     █  █▀█ ██▄   █▄█ █▀█ █ ▀ █ ██▄ ▄\n";
+		cout << "\n    █▄█ █▀█ █ █   █   █▀▀ █▀▀ ▀█▀   ▀█▀ █ █ █▀▀   █▀▀ ▄▀█ █▀▄▀█ █▀▀ █\n";
+		cout << "     █  █▄█ █▄█   █▄▄ ██▄ █▀   █     █  █▀█ ██▄   █▄█ █▀█ █ ▀ █ ██▄ ▄\n";
 		exit(0);
-		break;
-	case 'r':
 		break;
 	}
 }
+
 void Level1()
 {
-	
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(h, 14);
 	cout << "\n\t\t\t\tLevel 1";
@@ -226,8 +234,6 @@ void Level1()
 	LevelGenerator(map1);
 	Movement(map1);
 }
-
-
 
 void Level2()
 {
@@ -279,6 +285,16 @@ void Level6()
 	Movement(map6);
 }
 
+void Level10()
+{
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(h, 14);
+	cout << "\n\t\t\t\tLevel 10";
+	SetConsoleTextAttribute(h, 15);
+	LevelGenerator(map10);
+	Movement(map10);
+}
+
 void GamePlay()
 {
 	bool status1 = true;
@@ -292,7 +308,6 @@ void GamePlay()
 			{
 				if (map1[i][j] == 7 && map1[i][j + 1] == 7)
 				{
-					system("cls");
 					status1 = false;
 				}
 			}
@@ -307,9 +322,9 @@ void GamePlay()
 		{
 			for (int j = 0; j < 7; j++)
 			{
-				if (map2[i][j] == 7 && map2[i][j + 4] == 7 && map2[i + 4][j] == 7 && map2[i + 4][j + 4] == 7)
+				if (map2[i][j] == 7 && map2[i][j + 4] == 7 && map2[i + 4][j] == 7 && 
+					map2[i + 4][j + 4] == 7)
 				{
-					system("cls");
 					status2 = false;
 				}
 			}
@@ -324,9 +339,9 @@ void GamePlay()
 		{
 			for (int j = 0; j < 7; j++)
 			{
-				if (map3[i][j] == 7 && map3[i][j + 4] == 7 && map3[i + 4][j] == 7 && map3[i + 4][j + 4] == 7)
+				if (map3[i][j] == 7 && map3[i][j + 4] == 7 && map3[i + 4][j] == 7 && 
+					map3[i + 4][j + 4] == 7)
 				{
-					system("cls");
 					status3 = false;
 				}
 			}
@@ -343,7 +358,6 @@ void GamePlay()
 			{
 				if (map4[i][j] == 7 && map4[i + 1][j] == 7 && map4[i + 2][j] == 7)
 				{
-					system("cls");
 					status4 = false;
 				}
 			}
@@ -360,7 +374,6 @@ void GamePlay()
 			{
 				if (map5[i][j] == 7 && map5[i + 3][j + 1] == 7 && map5[i + 4][j - 1 == 7])
 				{
-					system("cls");
 					status5 = false;
 				}
 			}
@@ -371,14 +384,32 @@ void GamePlay()
 	{
 		system("cls");
 		Level6();
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 12; j++)
+			{
+				if (map6[i][j] == 7 && map6[i][j + 2] == 7 && map6[i + 1][j + 1] == 7 && 
+					map6[i + 2][j] == 7 && map6[i + 2][j + 2] == 7 && map6[i + 3][j] == 7 && 
+					map6[i + 3][j + 2] == 7)
+				{
+					status6 = false;
+				}
+			}
+		}
+	}
+	int status10 = true;
+	while (status10)
+	{
+		system("cls");
+		Level10();
 		for (int i = 0; i < 8; i++)
 		{
 			for (int j = 0; j < 8; j++)
 			{
-				if (map6[i][j] == 7 && map6[i + 1][j] == 7 && map6[i + 1][j - 1] == 7 && map6[i + 2][j] == 7 && map6[i + 2][j - 1])
+				if (map10[i][j] == 7 && map10[i + 1][j] == 7 && map10[i + 1][j - 1] == 7 && 
+					map10[i + 2][j] == 7 && map10[i + 2][j - 1])
 				{
-					system("cls");
-					status6 = false;
+					status10 = false;
 				}
 			}
 		}
