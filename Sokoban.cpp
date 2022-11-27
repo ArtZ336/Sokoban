@@ -1,4 +1,4 @@
-﻿#include "Menu.h"
+#include "Menu.h"
 #include "Game.h"
 
 int main()
@@ -13,4 +13,4 @@ int main()
 	GamePlay();
 
 	Sleep(INFINITE);
-}
+}                                                                                                                                                                                                                                                                                                                                                                                                                                        
