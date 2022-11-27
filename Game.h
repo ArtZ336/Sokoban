@@ -88,14 +88,14 @@ int map8[9][9] = {
 
 int map9[10][12] = {
 	{1,1,1,1,0,0,0,0,0,0,0,0},
-	{1,0,0,1,1,0,0,0,0,0,0,0},
-	{1,0,0,0,1,1,0,0,0,0,0,0},
-	{1,0,0,0,0,1,1,1,1,1,1,1},
-	{1,3,0,0,0,0,0,0,0,0,0,1},
-	{1,1,1,0,0,0,0,0,0,0,0,1},
-	{0,0,1,0,0,0,0,0,0,0,1,1},
+	{1,5,0,1,1,0,0,0,0,0,0,0},
+	{1,0,4,0,1,1,0,0,0,0,0,0},
+	{1,4,0,0,0,1,1,1,1,1,1,1},
+	{1,3,0,0,4,0,4,0,4,0,3,1},
+	{1,1,1,0,0,0,0,4,0,0,3,1},
+	{0,0,1,0,0,0,4,0,0,0,1,1},
 	{0,0,1,0,0,1,1,1,0,0,1,0},
-	{0,0,1,0,0,1,0,1,0,0,1,0},
+	{0,0,1,3,3,1,0,1,3,3,1,0},
 	{0,0,1,1,1,1,0,1,1,1,1,0}
 };
 
@@ -377,90 +377,90 @@ void GamePlay()
 			}
 		}
 	}
-	//int status2 = true;
-	//while (status2)
-	//{
-	//	system("cls");
-	//	Level2();
-	//	for (int i = 0; i < 7; i++)
-	//	{
-	//		for (int j = 0; j < 7; j++)
-	//		{
-	//			if (map2[i][j] == 7 && map2[i][j + 4] == 7 && map2[i + 4][j] == 7 && 
-	//				map2[i + 4][j + 4] == 7)
-	//			{
-	//				status2 = false;
-	//			}
-	//		}
-	//	}
-	//}
-	//int status3 = true;
-	//while (status3)
-	//{
-	//	system("cls");
-	//	Level3();
-	//	for (int i = 0; i < 7; i++)
-	//	{
-	//		for (int j = 0; j < 7; j++)
-	//		{
-	//			if (map3[i][j] == 7 && map3[i][j + 4] == 7 && map3[i + 4][j] == 7 && 
-	//				map3[i + 4][j + 4] == 7)
-	//			{
-	//				status3 = false;
-	//			}
-	//		}
-	//	}
-	//}
-	//int status4 = true;
-	//while (status4)
-	//{
-	//	system("cls");
-	//	Level4();
-	//	for (int i = 0; i < 8; i++)
-	//	{
-	//		for (int j = 0; j < 8; j++)
-	//		{
-	//			if (map4[i][j] == 7 && map4[i + 1][j] == 7 && map4[i + 2][j] == 7)
-	//			{
-	//				status4 = false;
-	//			}
-	//		}
-	//	}
-	//}
-	//int status5 = true;
-	//while (status5)
-	//{
-	//	system("cls");
-	//	Level5();
-	//	for (int i = 0; i < 8; i++)
-	//	{
-	//		for (int j = 0; j < 8; j++)
-	//		{
-	//			if (map5[i][j] == 7 && map5[i + 3][j + 1] == 7 && map5[i + 4][j - 1 == 7])
-	//			{
-	//				status5 = false;
-	//			}
-	//		}
-	//	}
-	//}
-	//int status6 = true;
-	//while (status6)
-	//{
-	//	system("cls");
-	//	Level6();
-	//	for (int i = 0; i < 9; i++)
-	//	{
-	//		for (int j = 0; j < 12; j++)
-	//		{
-	//			if (map6[i][j] == 7 && map6[i][j + 2] == 7 && map6[i + 1][j + 1] == 7 && 
-	//				map6[i + 2][j] == 7 && map6[i + 2][j + 2] == 7 && map6[i + 3][j] == 7 && 
-	//				map6[i + 3][j + 2] == 7)
-	//			{
-	//				status6 = false;
-	//			}
-	//		}
-	//	}
-	//}
+	int status2 = true;
+	while (status2)
+	{
+		system("cls");
+		Level2();
+		for (int i = 0; i < 7; i++)
+		{
+			for (int j = 0; j < 7; j++)
+			{
+				if (map2[i][j] == 7 && map2[i][j + 4] == 7 && map2[i + 4][j] == 7 && 
+					map2[i + 4][j + 4] == 7)
+				{
+					status2 = false;
+				}
+			}
+		}
+	}
+	int status3 = true;
+	while (status3)
+	{
+		system("cls");
+		Level3();
+		for (int i = 0; i < 7; i++)
+		{
+			for (int j = 0; j < 7; j++)
+			{
+				if (map3[i][j] == 7 && map3[i][j + 4] == 7 && map3[i + 4][j] == 7 && 
+					map3[i + 4][j + 4] == 7)
+				{
+					status3 = false;
+				}
+			}
+		}
+	}
+	int status4 = true;
+	while (status4)
+	{
+		system("cls");
+		Level4();
+		for (int i = 0; i < 8; i++)
+		{
+			for (int j = 0; j < 8; j++)
+			{
+				if (map4[i][j] == 7 && map4[i + 1][j] == 7 && map4[i + 2][j] == 7)
+				{
+					status4 = false;
+				}
+			}
+		}
+	}
+	int status5 = true;
+	while (status5)
+	{
+		system("cls");
+		Level5();
+		for (int i = 0; i < 8; i++)
+		{
+			for (int j = 0; j < 8; j++)
+			{
+				if (map5[i][j] == 7 && map5[i + 3][j + 1] == 7 && map5[i + 4][j - 1 == 7])
+				{
+					status5 = false;
+				}
+			}
+		}
+	}
+	int status6 = true;
+	while (status6)
+	{
+		system("cls");
+		Level6();
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 12; j++)
+			{
+				if (map6[i][j] == 7 && map6[i][j + 2] == 7 && map6[i + 1][j + 1] == 7 && 
+					map6[i + 2][j] == 7 && map6[i + 2][j + 2] == 7 && map6[i + 3][j] == 7 && 
+					map6[i + 3][j + 2] == 7)
+				{
+					status6 = false;
+				}
+			}
+		}
+	}
 	int status7 = true;
 	while (status7)
 	{
@@ -506,8 +506,9 @@ void GamePlay()
 		{
 			for (int j = 0; j < 12; j++)
 			{
-				if (map9[i][j] == 7 && map9[i + 5][j + 2] && map9[i + 5][j + 3] &&
-					map9[i][j])
+				if (map9[i][j] == 7 && map9[i + 4][j + 2] && map9[i + 4][j + 3] &&
+					map9[i + 4][j + 7] == 7 && map9[i + 4][j + 8] == 7 &&
+					map9[i][j + 9] == 7 && map9[i + 1][j + 9] == 7)
 				{
 					status9 = false;
 				}
@@ -531,4 +532,8 @@ void GamePlay()
 			}
 		}
 	}
+	system("cls");
+	cout << "\n     █▄█ █▀█ █ █   █ █ █ █▀█ █▄ █   ▀█▀ █ █ █▀▀   █▀▀ ▄▀█ █▀▄▀█ █▀▀ █\n";
+	cout << "      █  █▄█ █▄█   ▀▄▀▄▀ █▄█ █ ▀█    █  █▀█ ██▄   █▄█ █▀█ █ ▀ █ ██▄ ▄\n";
+	exit(0);
 }
